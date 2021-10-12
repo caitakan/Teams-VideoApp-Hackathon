@@ -41,7 +41,7 @@ function effectParameterChanged(effectName) {
       ...uiSelectedEffect,
     };
   } else {
-    if (effectName === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949") {
+    if (effectName === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f900") {
       appliedEffect.proportion = 2;
       appliedEffect.pixelValue = 200;
     } else {
