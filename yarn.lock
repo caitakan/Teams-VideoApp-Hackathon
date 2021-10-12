@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@microsoft/teams-js@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-1.11.0.tgz#20941687441c9dffa5cca55d643ba9676dfbc6bd"
+  integrity sha512-5utMOMWXdNq0cV8hGIZEUpUVChoasoYjBOItgFIKE2a4vavmzlhra+GNXMdpvlYlv6/r7ORtVCQUDFJvPTVj2Q==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"

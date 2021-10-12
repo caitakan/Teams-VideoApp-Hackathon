@@ -1,3 +1,6 @@
+import * as microsoftTeams from "@microsoft/teams-js";
+import {video} from "@microsoft/teams-js"
+
 microsoftTeams.initialize(() => { }, [
   "https://caitakan.github.io",
 ]);
@@ -13,7 +16,7 @@ let uiSelectedEffect = {};
 
 let errorOccurs = false;
 //Sample video effect
-function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
+function videoFrameHandler(videoFrame:video.VideoFrame, notifyVideoProcessed, notifyError) {
   const maxLen =
     (videoFrame.height * videoFrame.width) /
       Math.max(1, appliedEffect.proportion) - 4;
