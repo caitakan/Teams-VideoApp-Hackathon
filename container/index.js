@@ -120,7 +120,7 @@ async function sendNewVideoFrame() {
 
   endProfile("CopyToShareArray");
 
-  if (!sendToIframe) {
+  if (sendToIframe) {
     setTimeout(() => {
       startProfile("PostNewVideoFrame");
       videoFrameProcessed();
@@ -222,9 +222,11 @@ function receiveMessage(event) {
         sendToIframeToBeApplied = true;
       }
     }
+  } else {
+    sendNewVideoFrame();
   }
 }
-window.addEventListener("message", receiveMessage, false);
+window.addEventListener("message", receiveMessage);
 
 document.getElementById("proportion").addEventListener("change", function () {
   sendEffectParameters(
@@ -235,7 +237,7 @@ document.getElementById("proportion").addEventListener("change", function () {
 });
 
 document.getElementById("pixel_value").addEventListener("change", function () {
-  sendEffectParameters(
+  postMessage(
     JSON.stringify({
       pixelValue: this.value,
     })
@@ -257,7 +259,7 @@ const radios = document.getElementsByName("resolution");
 radios.forEach((radio) => {
   radio.onclick = function () {
     localStorage.setItem("resolution", resolutions[this.value]);
-    window.location.reload();
+    // window.location.reload();
   };
 });
 
