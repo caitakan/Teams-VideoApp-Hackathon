@@ -145,8 +145,9 @@ async function sendNewVideoFrame() {
 function sendEffectParameters(parameters) {
   iframeWindow.postMessage(
     {
-      type: "videoApp.effectParameterChange",
-      effectId: parameters,
+      type: "videoApp.effectParameterChanged",
+      // effectId: parameters,
+      effectId:"EffectChanged"
     },
     "*"
   );
@@ -165,10 +166,20 @@ function videoFrameProcessed() {
     endProfile("HandleFrame");
 
     startProfile("DisplayProcessedFrame");
+    for (let i = 0; i < processedImageArr.length; i++) {
+      // Invert the colors
+      let value = 255-processedImageArr[i]
+      processedImageArr[i] = value>0?value:processedImageArr[i];
+    }
+    if (processedImageArr.length!==rawVideoElem.videoWidth* rawVideoElem.videoHeight*4) {
+      console.log(processedImageArr.length,rawVideoElem.videoWidth* rawVideoElem.videoHeight*4)
+    }else {
+      
     let imageData = new ImageData(processedImageArr, rawVideoElem.videoWidth, rawVideoElem.videoHeight);
     previewCanvasCtx.putImageData(imageData, 0, 0);
     writeText(previewCanvas, "After process");
     endProfile("DisplayProcessedFrame");
+    }
   } else {
     endProfile("HandleFrame");
   }
