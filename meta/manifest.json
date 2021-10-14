@@ -3,7 +3,7 @@
   "manifestVersion": "devPreview",
   "version": "1.0.0",
   "showLoadingIndicator": true,
-  "id": "b15f98b7-1f9b-4bb7-ac9f-efddf27aae99",
+  "id": "b15f98b7-1f9b-4bb7-ac9f-efddf27aa778",
   "packageName": "com.microsoft.teams.videopp",
   "developer": {
     "name": "Hackathon-team",
@@ -16,8 +16,8 @@
     "outline": "icon-outline.png"
   },
   "name": {
-    "short": "Jason filter 4",
-    "full": "Jason filter 4"
+    "short": "Jason filter 5",
+    "full": "Jason filter 5"
   },
   "description": {
     "short": "This repo demonstrate a minimal Teams video app.",
@@ -46,11 +46,11 @@
   "meetingExtensionDefinition": {
     "filters": [
       {
-        "id": "f36d7f68-7c71-41f5-8fd9-ebf0ae38f900",
-        "name": "Jason filter 4",
+        "id": "f36d7f68-7c71-41f5-8fd9-ebf0ae38f775",
+        "name": "Jason filter 5",
         "thumbnail": "half.png"
       }
     ],
-    "videoAppContentUrl": "https://localhost:8000/index.html"
+    "videoAppContentUrl": "https://caitakan.github.io/Teams-VideoApp-Hackathon/index.html"
   }
 }
