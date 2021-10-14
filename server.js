@@ -17,12 +17,6 @@ var staticServe = function (req, res) {
   var resolvedBase = path.resolve(staticBasePath);
   var safeSuffix = path.normalize(req.url).replace(/^(\.\.[\/\\])+/, "");
   var fileLoc = path.join(resolvedBase, safeSuffix);
-//   if (port > 8000) {
-    
-    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-    // res.setHeader('Cross-Origin-Opener-Policy', 'cross-origin');
-  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-// }
 
   fs.readFile(fileLoc, function (err, data) {
     if (err) {

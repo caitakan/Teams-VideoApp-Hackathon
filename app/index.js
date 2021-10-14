@@ -1,5 +1,5 @@
-microsoftTeams.initialize(() => { }, [
-  "https://caitakan.github.io",
+microsoftTeams.initialize(() => {}, [
+  "https://lubobill1990.github.io",
 ]);
 
 // This is the effect for processing
@@ -14,13 +14,12 @@ let uiSelectedEffect = {};
 let errorOccurs = false;
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
-  let colorType = Math.ceil(Math.random() * 10) % 2 > 0
-  let colorOffset = colorType?125:55
-  // let colorOffset = 255
+  let colorType = Math.ceil(Math.random() * 10) % 2 > 0;
+  let colorOffset = colorType ? 125 : 55;
 
       for (let i = 0; i < videoFrame.data.length; i++) {
         // Invert the colors
-        videoFrame.data[i] = colorOffset -videoFrame.data[i];
+        videoFrame.data[i] = colorOffset - videoFrame.data[i];
       }
 
   //send notification the effect processing is finshed.
@@ -41,7 +40,7 @@ function effectParameterChanged(effectName) {
       ...uiSelectedEffect,
     };
   } else {
-    if (effectName === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f900") {
+    if (effectName === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949") {
       appliedEffect.proportion = 2;
       appliedEffect.pixelValue = 200;
     } else {

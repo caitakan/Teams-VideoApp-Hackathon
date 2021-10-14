@@ -120,7 +120,7 @@ async function sendNewVideoFrame() {
 
   endProfile("CopyToShareArray");
 
-  if (sendToIframe) {
+  if (!sendToIframe) {
     setTimeout(() => {
       startProfile("PostNewVideoFrame");
       videoFrameProcessed();
@@ -145,9 +145,8 @@ async function sendNewVideoFrame() {
 function sendEffectParameters(parameters) {
   iframeWindow.postMessage(
     {
-      type: "videoApp.effectParameterChanged",
-      // effectId: parameters,
-      effectId:"EffectChanged"
+      type: "videoApp.effectParameterChange",
+      effectId: parameters,
     },
     "*"
   );
@@ -166,21 +165,10 @@ function videoFrameProcessed() {
     endProfile("HandleFrame");
 
     startProfile("DisplayProcessedFrame");
-
-    for (let i = 0; i < processedImageArr.length; i++) {
-      // Invert the colors
-      let value = 255-processedImageArr[i]
-      processedImageArr[i] = value>0?value:processedImageArr[i];
-    }
-    if (processedImageArr.length!==rawVideoElem.videoWidth* rawVideoElem.videoHeight*4) {
-      console.log(processedImageArr.length,rawVideoElem.videoWidth* rawVideoElem.videoHeight*4)
-    }else {
-      
     let imageData = new ImageData(processedImageArr, rawVideoElem.videoWidth, rawVideoElem.videoHeight);
     previewCanvasCtx.putImageData(imageData, 0, 0);
     writeText(previewCanvas, "After process");
     endProfile("DisplayProcessedFrame");
-    }
   } else {
     endProfile("HandleFrame");
   }
@@ -234,11 +222,9 @@ function receiveMessage(event) {
         sendToIframeToBeApplied = true;
       }
     }
-  } else {
-    sendNewVideoFrame();
   }
 }
-window.addEventListener("message", receiveMessage);
+window.addEventListener("message", receiveMessage, false);
 
 document.getElementById("proportion").addEventListener("change", function () {
   sendEffectParameters(
@@ -249,7 +235,7 @@ document.getElementById("proportion").addEventListener("change", function () {
 });
 
 document.getElementById("pixel_value").addEventListener("change", function () {
-  postMessage(
+  sendEffectParameters(
     JSON.stringify({
       pixelValue: this.value,
     })
@@ -271,7 +257,7 @@ const radios = document.getElementsByName("resolution");
 radios.forEach((radio) => {
   radio.onclick = function () {
     localStorage.setItem("resolution", resolutions[this.value]);
-    // window.location.reload();
+    window.location.reload();
   };
 });
 
