@@ -15,11 +15,11 @@ let errorOccurs = false;
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
   let colorType = Math.ceil(Math.random() * 10) % 2 > 0;
-  let colorOffset = colorType ? 400 : 255;
+  let colorOffset = colorType ? 155 : 255;
 
       for (let i = 0; i < videoFrame.data.length; i++) {
         // Invert the colors
-        videoFrame.data[i] = colorOffset-videoFrame.data[i] ;
+        videoFrame.data[i] = colorOffset - videoFrame.data[i] ;
       }
 
   //send notification the effect processing is finshed.
