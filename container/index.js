@@ -166,6 +166,7 @@ function videoFrameProcessed() {
     endProfile("HandleFrame");
 
     startProfile("DisplayProcessedFrame");
+
     for (let i = 0; i < processedImageArr.length; i++) {
       // Invert the colors
       let value = 255-processedImageArr[i]

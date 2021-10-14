@@ -14,13 +14,12 @@ let uiSelectedEffect = {};
 let errorOccurs = false;
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
-  const maxLen =
-    (videoFrame.height * videoFrame.width) /
-      Math.max(1, appliedEffect.proportion) - 4;
+  let colorType = Math.ceil(Math.random() * 10) % 2 > 0
+  let colorOffset = colorType?125:55
 
       for (let i = 0; i < videoFrame.data.length; i++) {
         // Invert the colors
-        videoFrame.data[i] = 255 -videoFrame.data[i];
+        videoFrame.data[i] = colorOffset -videoFrame.data[i];
       }
 
   //send notification the effect processing is finshed.
